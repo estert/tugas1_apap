@@ -11,4 +11,5 @@ public class ProgramStudiModel {
 	private String kode_prodi;
 	private String nama_prodi;
 	private int id_fakultas;
+	private FakultasModel fakultas;
 }

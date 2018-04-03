@@ -63,7 +63,7 @@
 					<h4 style="font-weight: bold;">NIK</h4>
 				</div>
 				<div class="col-sm-6">
-					<h4 th:text="${student.nik}">NIK</h4>
+					<h4 th:text="${student.npm}">NIK</h4>
 				</div>
 			</div>
 			<div class="row">
@@ -87,7 +87,7 @@
 					<h4 style="font-weight: bold;">Program Studi</h4>
 				</div>
 				<div class="col-sm-6">
-					<h4 th:text="${student.id_prodi}">Program Studi</h4>
+					<h4 th:text="${student.prodi.nama_prodi}">Program Studi</h4>
 				</div>
 			</div>
 			<div class="row">
@@ -95,7 +95,7 @@
 					<h4 style="font-weight: bold;">Fakultas</h4>
 				</div>
 				<div class="col-sm-6">
-					<h4 th:text="${student.fakultas} + '/' + ${student.RW}">Fakultas</h4>
+					<h4 th:text="${student.prodi.fakultas.nama_fakultas}">Fakultas</h4>
 				</div>
 			</div>
 			<div class="row">
@@ -103,7 +103,7 @@
 					<h4 style="font-weight: bold;">Universitas</h4>
 				</div>
 				<div class="col-sm-6">
-					<h4 th:text="${student.universitas}">Universitas</h4>
+					<h4 th:text="${student.prodi.fakultas.universitas.nama_univ}">Universitas</h4>
 				</div>
 			</div>
 			<div class="row">
@@ -111,7 +111,7 @@
 					<h4 style="font-weight: bold;">Jenis Kelamin</h4>
 				</div>
 				<div class="col-sm-6">
-					<h4 th:text="${student.jenis_kelamin}">Jenis Kelamin</h4>
+					<h4 th:text="${student.jenis_kelamin>=0}?'Laki-laki':'Perempuan'">Jenis Kelamin</h4>
 				</div>
 			</div>
 			<div class="row">

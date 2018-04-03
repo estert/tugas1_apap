@@ -11,17 +11,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StudentModel
 {
-	private int id;
+	private String id;
     private String npm;
     private String nama;
     private String tempat_lahir;
-    private Date tanggal_lahir;
-    private int jenis_kelamin;
+    private String tanggal_lahir;
+    private Integer jenis_kelamin;
     private String agama;
     private String golongan_darah;
-    private String status;
+    private String status = "Aktif";
     private String tahun_masuk;
     private String jalur_masuk;
-    private int id_prodi;
-
+    private Integer id_prodi;
+    private ProgramStudiModel prodi;
+    private FakultasModel fakultas;
 }

@@ -2,14 +2,13 @@ package com.example.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.dao.ProgramStudiMapper;
 import com.example.dao.StudentMapper;
-import com.example.model.FakultasModel;
-import com.example.model.ProgramStudiModel;
-import com.example.model.StudentModel;
-import com.example.model.UniversitasModel;
+import com.example.model.*;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +18,8 @@ public class StudentServiceDatabase implements StudentService
 {
     @Autowired
     private StudentMapper studentMapper;
-
+    private ProgramStudiMapper prodiMapper;
+    
 
     @Override
     public StudentModel selectStudent (String npm)
@@ -35,57 +35,49 @@ public class StudentServiceDatabase implements StudentService
         log.info ("select all students");
         return studentMapper.selectAllStudents ();
     }
-
-
+    
     @Override
-    public void addStudent (StudentModel student)
+    public void addStudent (StudentModel mahasiswa)
     {
-        studentMapper.addStudent (student);
+        studentMapper.addStudent (mahasiswa);
     }
 
+    @Override
+    public ProgramStudiModel selectProdiNama(Integer id_prodi)
+    {
+    	log.info ("select prodi_name with id_prodi {}", id_prodi);
+        return prodiMapper.selectProdiNama(id_prodi);
+    }
 
     @Override
     public void deleteStudent (String npm)
     {
-    	log.info("student" + npm+ "deleted");
+    	log.info("student "+npm+" deleted");
     	studentMapper.deleteStudent(npm);
-
+    }
+    
+    @Override
+    public void updateStudent (StudentModel student)
+    {
+    	log.info("update student");
+    	studentMapper.updateStudent(student);
     }
 
+
 	@Override
-	public void updateStudent(StudentModel student) {
+	public ProgramStudiModel selectProdi(Integer id_prodi) {
 		// TODO Auto-generated method stub
-		log.info("student" +student.getNpm()+ "updated");
-		studentMapper.updateStudent(student);
+        log.info ("select prodi name with id {}", id_prodi);
+        return studentMapper.selectProdi(id_prodi);
 	}
-
-
-//	@Override
-//	public FakultasModel selectFakultas(int id) {
-//		// TODO Auto-generated method stub
-//		log.info ("select fakultas with id {}", id);
-//        return studentMapper.searchFakultas(id);
-//	}
+	
 
 
 	@Override
-	public ProgramStudiModel selectProdi(int id) {
+	public FakultasModel selectFak(Integer id_fakultas) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public UniversitasModel selectUniv(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public FakultasModel selectFakultas(int id) {
-		// TODO Auto-generated method stub
-		return null;
+    	log.info ("select fakultas with id {}", id_fakultas);
+        return studentMapper.selectFak(id_fakultas);
 	}
 
 }
